@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+.container {
+  position:absolute;
+  padding:0;
+  margin:0;
+  top:0;
+  left:0;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  align-content: center;
+  scrollbar-width: none;
+  -ms-overflow-style: none
+}
+

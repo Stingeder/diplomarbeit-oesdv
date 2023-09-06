@@ -1,0 +1,94 @@
+.login-title {
+  top: 30%;
+  position: absolute;
+  color: rgba(34, 73, 87, 1);
+  width: auto;
+  height: auto;
+  font-size: 3.2vw;
+  align-self: center;
+  font-family: 'Lexend Deca', sans-serif;
+}
+
+.login-headline {
+  top: 10%;
+  position: absolute;
+  color: rgb(10, 49, 65);
+  width: auto;
+  height: auto;
+  font-size: 4vw;
+  font-weight: bold;
+  align-self: center;
+  font-family: 'Lexend Deca', sans-serif;
+}
+
+.login-field-username{
+  position: relative;
+  width: 20vw;
+  height: 7vh;
+  max-width: 500px;
+  border-radius: 10px;
+  background-color: #001635;
+  color: white;
+  font-size: 18px;
+  font-family: 'Lexend Deca', sans-serif;
+  justify-content: center;
+  color: white;
+}
+
+.username-div {
+  position: relative;
+  display: flex;
+  top: 48%;
+}
+
+.password-div {
+  position: relative;
+  display: flex;
+  top: 45%;
+}
+
+.login-text-div {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+}
+
+.login-field-password{
+  position: relative;
+  width: 20vw;
+  height: 7vh;
+  max-width: 500px;
+  border-radius: 10px;
+  background-color: #001635;
+  color: white;
+  font-size: 18px;
+  font-family: 'Lexend Deca', sans-serif;
+  justify-content: center;
+  color: white;
+}
+
+.login-button {
+  position: absolute;
+  top: 100%;
+  width: 15vw;
+  height: 5vh;
+  justify-content: center;
+  font-size: 3.3vh;
+  font-style: bold;
+  font-family: 'Lexend Deca', sans-serif;
+  cursor:pointer;
+  color: #001635;
+  background-color: #001635;
+}
+
+.login-input-container {
+  position: absolute;
+  top: calc(10vh);
+  bottom: calc(35vh);
+  left: calc(15vw);
+  right: calc(15vw);
+  display:flex;
+  justify-items: center;
+  justify-content: center;
+}

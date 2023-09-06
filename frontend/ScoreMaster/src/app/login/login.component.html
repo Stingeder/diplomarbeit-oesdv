@@ -1,0 +1,21 @@
+<form #f="ngForm">
+  <div class="login-input-container">
+    <div>
+      <div>
+        <span class="login-headline">ScoreMaster</span>
+        <span class="login-title">Sign in</span>
+      </div>
+    <div class="username-div">
+      <mat-form-field fxFlex="40">
+        <input matInput type="text" placeholder="Username" id="username" name="username" required>
+      </mat-form-field>
+    </div>
+    <div class="password-div">
+      <mat-form-field fxFlex="40">
+        <input matInput type="password" placeholder="Password" id="password" name="password" required>
+      </mat-form-field>
+    </div>
+    </div>
+    <button mat-raised-button class="login-button" [disabled]="!f.valid">Login</button>
+  </div>
+</form>
