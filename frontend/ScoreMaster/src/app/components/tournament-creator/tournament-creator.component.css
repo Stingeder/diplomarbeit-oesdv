@@ -1,0 +1,10 @@
+.input-container {
+  position: absolute;
+  top: calc(20vh);
+  bottom: calc(25vh);
+  left: calc(41vw);
+  right: calc(41vw);
+  justify-content: center;
+  display:flex;
+  padding: 50px;
+}

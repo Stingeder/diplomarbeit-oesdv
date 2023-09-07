@@ -1,0 +1,15 @@
+<div class="container">
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-button class="toolbar-button" (click)="routingService.goToTournamentCreator()">Wettkampf erstellen</button>
+        <button mat-button class="toolbar-button" color="warn">Logout</button>
+      </mat-menu>
+      <span>Wettkampf erstellen - {{loginService.username}} (Admin)</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+</div>

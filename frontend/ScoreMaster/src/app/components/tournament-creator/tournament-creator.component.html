@@ -1,0 +1,39 @@
+<div class="container">
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-button class="toolbar-button" (click)="routingService.goToTournamentView()">Wettkämpfe</button>
+        <button mat-button class="toolbar-button" color="warn">Logout</button>
+      </mat-menu>
+      <span>Wettkampf erstellen - {{loginService.username}} (Admin)</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="input-container" [class.mat-elevation-z2]=true>
+    <form #f="ngForm">
+      <h1>Wettkampf erstellen</h1>
+      <div></div>
+      <mat-form-field>
+        <input type="text" id="tournamentName" name="tournamentName" [(ngModel)]="tournamentCreatorService.tournamentName" matInput placeholder="Wettkampf Name"  required>
+      </mat-form-field>
+      <div></div>
+      <mat-form-field>
+        <input type="text" id="tournamentName" name="tournamentName" [(ngModel)]="tournamentCreatorService.tournamentName" matInput placeholder="Hauptwerter"  required>
+      </mat-form-field>
+      <div></div>
+      <mat-form-field>
+        <mat-label>Wettkampf-Typ</mat-label>
+        <mat-select [(ngModel)]="tournamentCreatorService.tournamentType" required>
+          <mat-option>- -</mat-option>
+          <mat-option *ngFor="let type of tournamentCreatorService.tournamentTypes" [value]="type">
+            {{type}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div></div>
+      <button mat-flat-button>Erstellen</button>
+    </form>
+  </div>
+</div>
