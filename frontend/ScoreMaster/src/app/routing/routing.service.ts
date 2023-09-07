@@ -21,4 +21,8 @@ export class RoutingService {
   public goToAccessDenied(){
     this.router.navigate(['/access_denied']);
   }
+
+  public goToLogin(){
+    this.router.navigate(['/login']);
+  }
 }

@@ -6,7 +6,7 @@
       </button>
       <mat-menu #menu="matMenu">
         <button mat-button class="toolbar-button" (click)="routingService.goToTournamentCreator()">Wettkampf erstellen</button>
-        <button mat-button class="toolbar-button" color="warn">Logout</button>
+        <button mat-button class="toolbar-button" color="warn" (click)="loginService.logout()">Logout</button>
       </mat-menu>
       <span>Wettkampf erstellen - {{loginService.username}} (Admin)</span>
     </mat-toolbar-row>
