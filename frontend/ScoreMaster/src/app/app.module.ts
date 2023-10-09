@@ -9,6 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { MaterialModule } from './material/material.module';
 import { TournamentViewComponent } from './components/tournament-view/tournament-view.component';
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
+import { TestComponent } from './components/test/test/test.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AccessDeniedComponent } from './components/access-denied/access-denied.
     LoginComponent,
     TournamentCreatorComponent,
     TournamentViewComponent,
-    AccessDeniedComponent
+    AccessDeniedComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

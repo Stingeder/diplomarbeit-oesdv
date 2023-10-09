@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { TournamentCreatorComponent } from './components/tournament-creator/tournament-creator.component';
 import { TournamentViewComponent } from './components/tournament-view/tournament-view.component';
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
+import { TestComponent } from './components/test/test/test.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'tournament_creator', component: TournamentCreatorComponent },
   { path: 'tournament_view', component: TournamentViewComponent },
   { path: 'access_denied', component: AccessDeniedComponent },
+  { path: 'test', component: TestComponent },
 ];
 
 @NgModule({

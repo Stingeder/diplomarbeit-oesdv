@@ -14,6 +14,10 @@ export class LoginService {
     public routing: RoutingService,
   ) { }
 
+  public login() {
+
+  }
+
   public generateRandomString(): string {
     const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!§$%&/()=?{[]}";
     let randomString = "";
