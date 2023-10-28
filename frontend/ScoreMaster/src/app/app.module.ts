@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +10,8 @@ import { MaterialModule } from './material/material.module';
 import { TournamentViewComponent } from './components/tournament-view/tournament-view.component';
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
 import { TestComponent } from './components/test/test/test.component';
+export const BASE_URL = new InjectionToken<string>('BaseUrl');
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,7 @@ import { TestComponent } from './components/test/test/test.component';
     BrowserAnimationsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [{provide: BASE_URL, useValue: 'http://localhost:5000'}], // http://172.17.214.11:5000
   bootstrap: [AppComponent]
 })
 export class AppModule { }

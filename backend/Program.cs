@@ -1,4 +1,7 @@
 using backend.Database;
+using backend.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -17,6 +20,98 @@ builder.Services.AddCors(options => // cors to allow crud operations for certain
 
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/users", async (DataContext context) => await context.Users.ToListAsync());
+
+app.MapGet(
+        "users/{id}",
+        async (DataContext context, int id) =>
+        {
+            return await context.TournamentUsers.FindAsync(id) is TournamentUser tournamentUser
+                ? Results.Ok(tournamentUser)
+                : Results.NotFound("No User with that id found.");
+        }
+    );
+
+app.MapGet(
+    "users/{name}",
+    async (DataContext context, string name) =>
+    {
+        var tournamentUser = await context.TournamentUsers
+            .FirstOrDefaultAsync(user => user.Username == name);
+
+        return tournamentUser != null
+            ? Results.Ok(tournamentUser)
+            : Results.NotFound("No User with that name found.");
+    }
+);
+
+
+app.MapPost("/users", async (DataContext context, CreateTournamentUserDTO user) =>
+{
+    try
+    {
+        var existingMeal = await context.TournamentUsers.FirstOrDefaultAsync(u => u.Username.ToLower() == user.Username.ToLower());
+        if (existingMeal != null)
+        {
+            return Results.BadRequest(new { message = "A user with this name already exists." });
+        }
+
+        var newUser = new TournamentUser
+        {
+            Username = user.Username,
+            Password = user.Password,
+            Type = user.Type,
+            TournamentId = user.TournamentId,
+            ConnectionString = user.ConnectionString
+        };
+        context.TournamentUsers.Add(newUser);
+        await context.SaveChangesAsync();
+        return Results.Created("Created successfully.", newUser);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+        return Results.StatusCode(StatusCodes.Status500InternalServerError);
+    }
+});
+
+app.MapGet("/tournaments", async (DataContext context) => await context.Tournaments.ToListAsync());
+
+app.MapGet(
+        "tournaments/{id}",
+        async (DataContext context, int id) =>
+        {
+            return await context.Tournaments.FindAsync(id) is Tournament tournament
+                ? Results.Ok(tournament)
+                : Results.NotFound("No Tournament with that id found.");
+        }
+    );
+
+app.MapPost("/tournaments", async (DataContext context, CreateTournamentDTO tournament) =>
+{
+    try
+    {
+        var existingMeal = await context.Tournaments.FirstOrDefaultAsync(t => t.Name.ToLower() == tournament.Name.ToLower());
+        if (existingMeal != null)
+        {
+            return Results.BadRequest(new { message = "A Tournament with this name already exists." });
+        }
+
+        var newTournament = new Tournament
+        {
+            Name = tournament.Name,
+            Type = tournament.Type,
+        };
+        context.Tournaments.Add(newTournament);
+        await context.SaveChangesAsync();
+        return Results.Created("Created successfully.", newTournament);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+        return Results.StatusCode(StatusCodes.Status500InternalServerError);
+    }
+});
+
 
 app.Run();

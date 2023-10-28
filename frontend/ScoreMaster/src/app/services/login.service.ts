@@ -6,9 +6,9 @@ import { RoutingService } from '../routing/routing.service';
 })
 export class LoginService {
 
-  username = "Julian Stingeder";
-  password = "132123"
-  type = 3;
+  username = "";
+  password = "";
+  type = -1;
 
   constructor(
     public routing: RoutingService,
