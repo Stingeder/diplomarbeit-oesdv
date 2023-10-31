@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { RoutingService } from '../routing/routing.service';
 import { UserService } from '../api/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 
 @Injectable({
@@ -15,23 +18,28 @@ export class LoginService {
   constructor(
     public routing: RoutingService,
     public userService: UserService,
+    public snackBar: MatSnackBar
   ) { }
 
   public login() {
-    this.userService.getUserByName(this.username).subscribe(user => {
-      console.log("works");
-      console.log(this.username);
-      if(user.password === this.password){
-        this.type = user.type;
-        console.log("works1");
-        if(user.type === 0){
-          this.routing.goToTournamentCreator();
-          console.log("works2");
+    this.userService.getUserByName(this.username).pipe(
+        catchError(error => {
+            this.openSnackBar("Wrong Username Or Password");
+            return throwError(error);
+        })
+    ).subscribe(user => {
+        console.log(this.username);
+        if(user.password === this.password) {
+            this.type = user.type;
+            if(user.type === 0) {
+                this.routing.goToTournamentCreator();
+            }
+        } else {
+            this.openSnackBar("Wrong Username Or Password");
         }
-      }
-
-    })
+    });
   }
+
 
   public generateRandomString(): string {
     const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!§$%&/()=?{[]}";
@@ -53,5 +61,11 @@ export class LoginService {
     this.type = -1;
     localStorage.setItem("currUserKey", "-1");
     this.routing.goToLogin();
+  }
+
+  openSnackBar(message: string, action: string = 'OK') {
+    this.snackBar.open(message, action, {
+      duration: 4000,
+    });
   }
 }
