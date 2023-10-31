@@ -1,94 +1,48 @@
-.login-title {
-  top: 30%;
-  position: absolute;
-  color: rgba(34, 73, 87, 1);
-  width: auto;
-  height: auto;
-  font-size: 3.2vw;
-  align-self: center;
-  font-family: 'Lexend Deca', sans-serif;
-}
-
-.login-headline {
-  top: 10%;
-  position: absolute;
-  color: rgb(10, 49, 65);
-  width: auto;
-  height: auto;
-  font-size: 4vw;
-  font-weight: bold;
-  align-self: center;
-  font-family: 'Lexend Deca', sans-serif;
-}
-
-.login-field-username{
-  position: relative;
-  width: 20vw;
-  height: 7vh;
-  max-width: 500px;
-  border-radius: 10px;
-  background-color: #001635;
-  color: white;
-  font-size: 18px;
-  font-family: 'Lexend Deca', sans-serif;
-  justify-content: center;
-  color: white;
-}
-
-.username-div {
-  position: relative;
-  display: flex;
-  top: 48%;
-}
-
-.password-div {
-  position: relative;
-  display: flex;
-  top: 45%;
-}
-
-.login-text-div {
-  position: relative;
+.container {
   display: flex;
   align-items: center;
-
-}
-
-.login-field-password{
-  position: relative;
-  width: 20vw;
-  height: 7vh;
-  max-width: 500px;
-  border-radius: 10px;
-  background-color: #001635;
-  color: white;
-  font-size: 18px;
-  font-family: 'Lexend Deca', sans-serif;
   justify-content: center;
-  color: white;
-}
-
-.login-button {
-  position: absolute;
-  top: 100%;
-  width: 15vw;
-  height: 5vh;
-  justify-content: center;
-  font-size: 3.3vh;
-  font-style: bold;
-  font-family: 'Lexend Deca', sans-serif;
-  cursor:pointer;
-  color: #001635;
-  background-color: #001635;
+  height: 100vh;
 }
 
 .login-input-container {
-  position: absolute;
-  top: calc(10vh);
-  bottom: calc(35vh);
-  left: calc(15vw);
-  right: calc(15vw);
-  display:flex;
-  justify-items: center;
-  justify-content: center;
+  width: 300px;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-headline {
+  color: rgb(10, 49, 65);
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.login-title {
+  color: rgba(34, 73, 87, 1);
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+.login-button {
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+  background-color: #001635;
+  border: none;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
 }
