@@ -7,12 +7,12 @@
       </div>
     <div class="username-div">
       <mat-form-field fxFlex="40">
-        <input matInput type="text" placeholder="Username" id="username" name="username" required>
+        <input matInput type="text" placeholder="Username" id="username" name="username" [(ngModel)]="loginService.username" required>
       </mat-form-field>
     </div>
     <div class="password-div">
       <mat-form-field fxFlex="40">
-        <input matInput type="password" placeholder="Password" id="password" name="password" required>
+        <input matInput type="password" placeholder="Password" id="password" name="password" [(ngModel)]="loginService.password" required>
       </mat-form-field>
     </div>
     </div>

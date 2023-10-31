@@ -10,6 +10,7 @@ import { MaterialModule } from './material/material.module';
 import { TournamentViewComponent } from './components/tournament-view/tournament-view.component';
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
 import { TestComponent } from './components/test/test/test.component';
+import { HttpClientModule } from '@angular/common/http';
 export const BASE_URL = new InjectionToken<string>('BaseUrl');
 
 
@@ -27,9 +28,10 @@ export const BASE_URL = new InjectionToken<string>('BaseUrl');
     AppRoutingModule,
     MaterialModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [{provide: BASE_URL, useValue: 'http://localhost:5000'}], // http://172.17.214.11:5000
+  providers: [{provide: BASE_URL, useValue: 'http://localhost:5158'}], // http://172.17.214.11:5000
   bootstrap: [AppComponent]
 })
 export class AppModule { }

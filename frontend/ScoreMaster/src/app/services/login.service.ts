@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { RoutingService } from '../routing/routing.service';
+import { UserService } from '../api/user.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +14,23 @@ export class LoginService {
 
   constructor(
     public routing: RoutingService,
+    public userService: UserService,
   ) { }
 
   public login() {
+    this.userService.getUserByName(this.username).subscribe(user => {
+      console.log("works");
+      console.log(this.username);
+      if(user.password === this.password){
+        this.type = user.type;
+        console.log("works1");
+        if(user.type === 0){
+          this.routing.goToTournamentCreator();
+          console.log("works2");
+        }
+      }
 
+    })
   }
 
   public generateRandomString(): string {

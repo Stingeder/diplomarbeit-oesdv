@@ -31,6 +31,10 @@ export class UserService {
     return this.httpClient.get<TournamentUser>(this.baseUrl + '/users/' + id);
   }
 
+  getUserByName(name: string): Observable<TournamentUser> {
+    return this.httpClient.get<TournamentUser>(this.baseUrl + '/users/name/' + name);
+  }
+
   neweUser(user: TournamentUser): Observable<TournamentUser> {
     return this.httpClient.post<TournamentUser>(this.baseUrl + '/users', user);
   }

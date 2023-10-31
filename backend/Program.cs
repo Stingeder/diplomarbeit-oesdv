@@ -12,15 +12,18 @@ builder.Services.AddCors(options => // cors to allow crud operations for certain
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       policy =>
                       {
-                          policy.WithOrigins("http://localhost:4200", "http://172.17.214.11:4200", "http://172.17.219.105:4200")
+                          policy.WithOrigins("http://localhost:4200", "http://172.17.214.11:4200", "http://172.17.219.105:4200", "http://localhost:5158")
                           .AllowAnyHeader()
-                          .WithMethods("GET", "POST", "PUT", "DELETE", "PATCH");
+                          .AllowAnyMethod();
                       });
 });
 
 var app = builder.Build();
 
-app.MapGet("/users", async (DataContext context) => await context.Users.ToListAsync());
+app.UseHttpsRedirection();
+app.UseCors(MyAllowSpecificOrigins);
+
+app.MapGet("/users", async (DataContext context) => await context.TournamentUsers.ToListAsync());
 
 app.MapGet(
         "users/{id}",
@@ -33,7 +36,7 @@ app.MapGet(
     );
 
 app.MapGet(
-    "users/{name}",
+    "users/name/{name}",
     async (DataContext context, string name) =>
     {
         var tournamentUser = await context.TournamentUsers
@@ -112,6 +115,5 @@ app.MapPost("/tournaments", async (DataContext context, CreateTournamentDTO tour
         return Results.StatusCode(StatusCodes.Status500InternalServerError);
     }
 });
-
 
 app.Run();
