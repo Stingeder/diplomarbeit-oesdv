@@ -11,5 +11,6 @@
     }
 
     public record CreateTournamentUserDTO(string Username, string Password, int Type, int TournamentId, string ConnectionString);
+    public record UpdateConnectionStringDTO(int Id, string ConnectionString);
 }
 

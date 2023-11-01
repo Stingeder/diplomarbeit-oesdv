@@ -78,6 +78,34 @@ app.MapPost("/users", async (DataContext context, CreateTournamentUserDTO user) 
     }
 });
 
+app.MapPatch("/users/connectionString", async (DataContext context, UpdateConnectionStringDTO connectionString) =>
+{
+    var user = await context.TournamentUsers.FindAsync(connectionString.Id);
+    if (user == null)
+    {
+        return Results.NotFound(new { message = "User not found." });
+    }
+
+    user.ConnectionString = connectionString.ConnectionString;
+    await context.SaveChangesAsync();
+
+    return Results.Ok(new { message = "Connection string updated successfully." });
+});
+
+app.MapGet(
+    "users/connectionString/{username}",
+    async (DataContext context, string username) =>
+    {
+        var user = await context.TournamentUsers.FirstOrDefaultAsync(u => u.Username.ToLower() == username.ToLower());
+        if (user == null)
+        {
+            return Results.Ok(new { message = "User not found." });
+        }
+
+        return Results.Ok(new { connectionString = user.ConnectionString });
+    }
+);
+
 app.MapGet("/tournaments", async (DataContext context) => await context.Tournaments.ToListAsync());
 
 app.MapGet(

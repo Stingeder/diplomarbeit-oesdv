@@ -2,14 +2,20 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, Inject } from '@angular/core';
 import { BASE_URL } from '../app.module';
 import { Observable } from 'rxjs';
+import { TooltipTouchGestures } from '@angular/material/tooltip';
 
 interface TournamentUser {
   id: number;
   username: string;
-  password: string;  // Note: Storing password directly on a client-side interface may not be safe.
+  password: string;
   type: number;
   tournamentId: number;
-  connectionString: string; // Unsure of the purpose of this from context.
+  connectionString: string;
+}
+
+interface ConnectionString {
+  id: number;
+  connectionString: string;
 }
 
 @Injectable({
@@ -35,7 +41,15 @@ export class UserService {
     return this.httpClient.get<TournamentUser>(this.baseUrl + '/users/name/' + name);
   }
 
-  neweUser(user: TournamentUser): Observable<TournamentUser> {
+  newUser(user: TournamentUser): Observable<TournamentUser> {
     return this.httpClient.post<TournamentUser>(this.baseUrl + '/users', user);
+  }
+
+  updateConnectionStringUser(connectionString: ConnectionString): Observable<TournamentUser> {
+    return this.httpClient.patch<TournamentUser>(this.baseUrl + '/users/connectionString', connectionString);
+  }
+
+  getConnectionStringByUsername(username: string): Observable<TournamentUser> {
+    return this .httpClient.get<TournamentUser>(this.baseUrl + '/users/connectionString/' + username);
   }
 }

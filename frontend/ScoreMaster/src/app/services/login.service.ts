@@ -6,6 +6,11 @@ import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 
+interface ConnectionString {
+  id: number;
+  connectionString: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -31,6 +36,13 @@ export class LoginService {
         console.log(this.username);
         if(user.password === this.password) {
             this.type = user.type;
+            let connectionString: ConnectionString = {
+              id: user.id,
+              connectionString: this.generateRandomString()
+            };
+            localStorage.setItem("connectionString", connectionString.connectionString);
+            localStorage.setItem("username", user.username);
+            this.userService.updateConnectionStringUser(connectionString).subscribe();
             if(user.type === 0) {
                 this.routing.goToTournamentCreator();
             }
