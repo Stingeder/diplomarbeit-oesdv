@@ -1,39 +1,37 @@
+<mat-toolbar class="app-toolbar">
+  <mat-toolbar-row>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="routingService.goToTournamentView()">Wettkämpfe</button>
+      <button mat-menu-item color="warn" (click)="loginService.logout()">Logout</button>
+    </mat-menu>
+    <span>Wettkampf erstellen - {{ loginService.username }} (Admin)</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
 <div class="container">
-  <mat-toolbar>
-    <mat-toolbar-row>
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-button class="toolbar-button" (click)="routingService.goToTournamentView()">Wettkämpfe</button>
-        <button mat-button class="toolbar-button" color="warn" (click)="loginService.logout()">Logout</button>
-      </mat-menu>
-      <span>Wettkampf erstellen - {{loginService.username}} (Admin)</span>
-    </mat-toolbar-row>
-  </mat-toolbar>
-  <div class="input-container" [class.mat-elevation-z2]=true>
-    <form #f="ngForm">
+  <div class="form-container mat-elevation-z8">
+    <form #tournamentForm="ngForm" class="tournament-form">
       <h1>Wettkampf erstellen</h1>
-      <div></div>
-      <mat-form-field>
-        <input type="text" id="tournamentName" name="tournamentName" [(ngModel)]="tournamentCreatorService.tournamentName" matInput placeholder="Wettkampf Name"  required>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Wettkampf Name" required [(ngModel)]="tournamentCreatorService.tournamentName" name="tournamentName">
       </mat-form-field>
-      <div></div>
-      <mat-form-field>
-        <input type="text" id="tournamentName" name="tournamentName" [(ngModel)]="tournamentCreatorService.tournamentName" matInput placeholder="Hauptwerter"  required>
-      </mat-form-field>
-      <div></div>
-      <mat-form-field>
+      <mat-form-field class="full-width-input">
         <mat-label>Wettkampf-Typ</mat-label>
-        <mat-select [(ngModel)]="tournamentCreatorService.tournamentType" required>
-          <mat-option>- -</mat-option>
-          <mat-option *ngFor="let type of tournamentCreatorService.tournamentTypes" [value]="type">
-            {{type}}
-          </mat-option>
+        <mat-select required [(ngModel)]="tournamentCreatorService.tournamentType" name="tournamentType">
+          <mat-option *ngFor="let type of tournamentCreatorService.tournamentTypes" [value]="type">{{ type }}</mat-option>
         </mat-select>
       </mat-form-field>
-      <div></div>
-      <button mat-flat-button>Erstellen</button>
+      <div class="button-container">
+        <button mat-button >Hauptwerter hinzufügen</button>
+        <button mat-button >Werter hinzufügen</button>
+        <button mat-button >Teilnehmer hinzufügen</button>
+      </div>
+      <div class="submit-button-container">
+        <button mat-raised-button color="primary" type="submit">Erstellen</button>
+      </div>
     </form>
   </div>
 </div>

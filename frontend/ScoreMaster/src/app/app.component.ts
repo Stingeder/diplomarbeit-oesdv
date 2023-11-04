@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './api/user.service';
 import { RoutingService } from './routing/routing.service';
+import { LoginService } from './services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     public userService: UserService,
+    public loginService: LoginService,
     public routing: RoutingService
   ) {}
 

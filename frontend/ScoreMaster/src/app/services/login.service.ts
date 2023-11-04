@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { RoutingService } from '../routing/routing.service';
 import { UserService } from '../api/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, mapTo, tap } from 'rxjs/operators';
 
 
 interface ConnectionString {
@@ -44,7 +44,10 @@ export class LoginService {
             localStorage.setItem("username", user.username);
             this.userService.updateConnectionStringUser(connectionString).subscribe();
             if(user.type === 0) {
-                this.routing.goToTournamentCreator();
+                this.routing.goToTournamentView();
+            }
+            else if(user.type === 3){
+              this.routing.goToTournamentCreator();
             }
         } else {
             this.openSnackBar("Wrong Username Or Password");
