@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { KeycloakService } from 'keycloak-angular';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'DiplomarbeitScoreMaster';
+  title = 'ScoreMaster';
+
+  constructor(private keycloakService: KeycloakService) {}
+
+  onLogout(): void {
+    this.keycloakService.logout(); // Use the appropriate method for your auth service
+  }
 }

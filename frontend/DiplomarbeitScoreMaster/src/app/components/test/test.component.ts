@@ -11,6 +11,6 @@ export class TestComponent implements OnInit {
   constructor(private keycloakService: KeycloakService) {}
 
   ngOnInit() {
-    console.log(this.keycloakService.getKeycloakInstance().loadUserInfo());
+
   }
 }

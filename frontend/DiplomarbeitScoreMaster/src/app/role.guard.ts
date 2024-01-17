@@ -15,6 +15,11 @@ export class RoleGuard implements CanActivate {
     if (this.keycloakService.isLoggedIn()) {
       const userRoles = this.keycloakService.getUserRoles();
 
+      // Allow access if no roles are required
+      if (!requiredRoles || requiredRoles.length === 0) {
+        return true;
+      }
+
       // Check if the user has any of the required roles
       const hasRequiredRole = requiredRoles.some((role) => userRoles.includes(role));
 

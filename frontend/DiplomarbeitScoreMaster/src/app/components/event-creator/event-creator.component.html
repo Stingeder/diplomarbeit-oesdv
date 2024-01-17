@@ -1,0 +1,54 @@
+<mat-card class="event-card">
+  <form class="event-form" (ngSubmit)="createEvent()">
+
+    <h2 class="form-title">Create a New Event</h2>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Event Name</mat-label>
+      <input matInput placeholder="Enter the name of the event" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Master Evaluator</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let evaluator of masterEvaluators" [value]="evaluator">
+          {{ evaluator.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Evaluators</mat-label>
+      <mat-select multiple>
+        <mat-option *ngFor="let evaluator of evaluators" [value]="evaluator">
+          {{ evaluator.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Participants</mat-label>
+      <mat-select multiple>
+        <mat-option *ngFor="let participant of participants" [value]="participant">
+          {{ participant.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Dance Type</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let danceType of danceTypes" [value]="danceType">
+          {{ danceType }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" class="submit-button" type="submit">
+        Create Event
+      </button>
+    </div>
+
+  </form>
+</mat-card>

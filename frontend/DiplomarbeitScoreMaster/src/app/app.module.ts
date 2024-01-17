@@ -8,6 +8,9 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { TestComponent } from './components/test/test.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { EventCreatorComponent } from './components/event-creator/event-creator.component';
+import { ForbiddenComponent } from './components/forbidden/forbidden.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -19,6 +22,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
       },
       initOptions: {
         onLoad: 'login-required',
+        redirectUri: window.location.origin + '/home',
         checkLoginIframe: false
       },
     });
@@ -27,7 +31,10 @@ function initializeKeycloak(keycloak: KeycloakService) {
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent
+    TestComponent,
+    EventCreatorComponent,
+    ForbiddenComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
