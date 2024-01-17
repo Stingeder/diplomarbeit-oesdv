@@ -8,23 +8,9 @@ import { LoginService } from './services/login.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'ScoreMaster';
 
-  constructor(
-    public userService: UserService,
-    public loginService: LoginService,
-    public routing: RoutingService
-  ) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    let username = localStorage.getItem("username");
-    if(username !== null){
-      this.userService.getConnectionStringByUsername(username).subscribe((user) => {
-        if(localStorage.getItem("connectionString") !== user.connectionString){
-          this.routing.goToLogin();
-        }
-      });
-    }
-  }
 }

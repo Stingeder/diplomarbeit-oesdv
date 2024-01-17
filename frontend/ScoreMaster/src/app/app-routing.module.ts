@@ -10,9 +10,9 @@ import { TestComponent } from './components/test/test/test.component';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'tournament_creator', component: TournamentCreatorComponent },
-  { path: 'tournament_view', component: TournamentViewComponent },
-  { path: 'access_denied', component: AccessDeniedComponent },
+  { path: 'tournament-creator', component: TournamentCreatorComponent },
+  { path: 'tournament-view', component: TournamentViewComponent },
+  { path: 'access-denied', component: AccessDeniedComponent },
   { path: 'test', component: TestComponent },
 ];
 

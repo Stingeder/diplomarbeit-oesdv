@@ -10,9 +10,10 @@ import { MaterialModule } from './material/material.module';
 import { TournamentViewComponent } from './components/tournament-view/tournament-view.component';
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
 import { TestComponent } from './components/test/test/test.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';;
 export const BASE_URL = new InjectionToken<string>('BaseUrl');
 
+import { AuthModule } from '@auth0/auth0-angular';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ export const BASE_URL = new InjectionToken<string>('BaseUrl');
     TournamentCreatorComponent,
     TournamentViewComponent,
     AccessDeniedComponent,
-    TestComponent
+    TestComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,9 +30,17 @@ export const BASE_URL = new InjectionToken<string>('BaseUrl');
     MaterialModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    // Import the module into the application, with configuration
+    AuthModule.forRoot({
+      domain: 'dev-7j8b3g4wvxo3ziq7.us.auth0.com',
+      clientId: 'yZeqXFl9N1HTNPPmTOym2d9HFLjqtnhB',
+      authorizationParams: {
+        redirect_uri: `${window.location.origin}/tournament-creator`
+      }
+    }),
   ],
   providers: [{provide: BASE_URL, useValue: 'http://localhost:5158'}], // http://172.17.214.11:5000
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

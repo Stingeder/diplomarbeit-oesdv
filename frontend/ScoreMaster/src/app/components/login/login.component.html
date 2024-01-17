@@ -1,15 +1,6 @@
-<div class="container">
-  <form #f="ngForm">
-      <div class="login-input-container">
-          <div class="login-headline">ScoreMaster</div>
-          <div class="login-title">Sign in</div>
-          <mat-form-field>
-              <input matInput type="text" placeholder="Username" id="username" name="username" [(ngModel)]="loginService.username" required>
-          </mat-form-field>
-          <mat-form-field>
-              <input matInput type="password" placeholder="Password" id="password" name="password" [(ngModel)]="loginService.password" required>
-          </mat-form-field>
-          <button mat-raised-button class="login-button" [disabled]="!f.valid" (click)="loginService.login()">Login</button>
-      </div>
-  </form>
+<div class="login-container">
+  <div class="login-card">
+      <h1>Welcome to ScoreMaster</h1>
+      <button (click)="login()" class="login-button">Log In or Sign Up</button>
+  </div>
 </div>

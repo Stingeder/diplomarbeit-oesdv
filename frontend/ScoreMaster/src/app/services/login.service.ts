@@ -4,6 +4,7 @@ import { UserService } from '../api/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable, throwError } from 'rxjs';
 import { catchError, mapTo, tap } from 'rxjs/operators';
+import { AuthService } from '@auth0/auth0-angular';
 
 
 interface ConnectionString {
@@ -23,7 +24,8 @@ export class LoginService {
   constructor(
     public routing: RoutingService,
     public userService: UserService,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    public auth: AuthService
   ) { }
 
   public login() {

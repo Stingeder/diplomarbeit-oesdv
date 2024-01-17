@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -9,8 +10,10 @@ import { LoginService } from 'src/app/services/login.service';
 export class LoginComponent{
 
   constructor(
-    public loginService: LoginService
+    private auth: AuthService,
   ) {}
 
-
+  login() {
+    this.auth.loginWithRedirect();
+  }
 }
