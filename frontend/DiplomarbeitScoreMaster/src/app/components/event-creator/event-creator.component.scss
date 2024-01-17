@@ -35,3 +35,9 @@
 .submit-button {
   min-width: 150px;
 }
+
+mat-form-field {
+  .mat-stroked-button {
+    margin-top: 16px; // Aligns the button with the input label
+  }
+}
