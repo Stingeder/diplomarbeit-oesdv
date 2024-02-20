@@ -8,6 +8,16 @@
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
+.button-container {
+  text-align: right;
+}
+
+.event-card {
+  .create-participants-button {
+    margin: 0 0 16px 0; // Adjusted margin to have only bottom margin
+  }
+}
+
 .event-form {
   width: 100%;
   max-width: 500px;
@@ -29,7 +39,7 @@
 .button-container {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 10px; // Adjusted margin top
 }
 
 .submit-button {

@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>Create Participants</h2>
+<div mat-dialog-content>
+  <div class="selection">
+    <mat-form-field>
+      <mat-label>Creation Type</mat-label>
+      <mat-select [(ngModel)]="creationType">
+        <mat-option value="single">Single Participant</mat-option>
+        <mat-option value="file">From File</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <hr class="separator">
+
+  <div *ngIf="creationType === 'single'">
+    <form>
+      <mat-form-field>
+        <input matInput placeholder="Username" [(ngModel)]="username" [ngModelOptions]="{standalone: true}" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" required>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <div *ngIf="creationType === 'file'">
+    <input type="file" (change)="onFileSelected($event)" accept=".csv">
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <span class="filler"></span>
+  <button mat-button color="primary" (click)="creationType === 'single' ? onCreateSingle() : onCreateFromFile()" [disabled]="creationType === 'single' ? isCreateSingleDisabled() : !fileSelected">
+    Create
+  </button>
+</div>

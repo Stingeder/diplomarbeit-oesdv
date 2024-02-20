@@ -11,6 +11,8 @@ import { MaterialModule } from './material/material.module';
 import { EventCreatorComponent } from './components/event-creator/event-creator.component';
 import { ForbiddenComponent } from './components/forbidden/forbidden.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { CreateParticipantDialogComponent } from './dialogs/create-participant-dialog/create-participant-dialog.component';
+import { FormsModule } from '@angular/forms';
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -34,14 +36,16 @@ function initializeKeycloak(keycloak: KeycloakService) {
     TestComponent,
     EventCreatorComponent,
     ForbiddenComponent,
-    HomepageComponent
+    HomepageComponent,
+    CreateParticipantDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     KeycloakAngularModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   providers: [{
     provide: APP_INITIALIZER,

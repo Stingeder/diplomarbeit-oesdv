@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventCreatorService } from '../../services/event-creator.service';
+import { CreateParticipantDialogComponent } from '../../dialogs/create-participant-dialog/create-participant-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -20,7 +22,7 @@ export class EventCreatorComponent implements OnInit {
     danceType: null
   };
 
-  constructor(private eventService: EventCreatorService) {}
+  constructor(private eventService: EventCreatorService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     // this.fetchData();
@@ -37,5 +39,16 @@ export class EventCreatorComponent implements OnInit {
     this.eventService.createEvent(this.eventForm).subscribe({
 
     });*/
+  }
+
+  openParticipantDialog(): void {
+    const dialogRef = this.dialog.open(CreateParticipantDialogComponent, {
+      width: '400px',
+      data: {} // You can pass data to the dialog if needed
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // Handle dialog close
+    });
   }
 }

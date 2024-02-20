@@ -1,0 +1,19 @@
+.selection {
+  margin-bottom: 16px;
+}
+
+.separator {
+  border: none;
+  height: 1px;
+  background-color: #ccc;
+  margin: 32px 0;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filler {
+  flex-grow: 1;
+}
