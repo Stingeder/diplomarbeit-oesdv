@@ -38,18 +38,18 @@ export class CreateParticipantDialogComponent {
         }
         if (isValidFormat) {
           console.log('CSV format is correct');
-          this.fileSelected = true; // Set fileSelected to true if CSV format is correct
+          this.fileSelected = true;
         } else {
           this.snackBar.open('Invalid CSV format. Please ensure each row contains only a username and a password.', 'Close', {
             duration: 3000,
           });
-          this.fileSelected = false; // Set fileSelected to false if CSV format is incorrect
+          this.fileSelected = false;
         }
       } else {
         this.snackBar.open('Invalid CSV format. The file must contain at least one data row besides the header.', 'Close', {
           duration: 3000,
         });
-        this.fileSelected = false; // Set fileSelected to false if CSV format is incorrect
+        this.fileSelected = false;
       }
     };
 
@@ -57,14 +57,7 @@ export class CreateParticipantDialogComponent {
   }
 
   onCreateSingle(): void {
-    // Logic to create single participant
-    if (this.username.trim() !== '' && this.password.trim() !== '') {
-      // Proceed with creating single participant
-    } else {
-      this.snackBar.open('Please enter both username and password.', 'Close', {
-        duration: 3000,
-      });
-    }
+
   }
 
   onCreateFromFile(): void {

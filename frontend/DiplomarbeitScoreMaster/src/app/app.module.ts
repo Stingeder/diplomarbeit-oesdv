@@ -13,6 +13,7 @@ import { ForbiddenComponent } from './components/forbidden/forbidden.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { CreateParticipantDialogComponent } from './dialogs/create-participant-dialog/create-participant-dialog.component';
 import { FormsModule } from '@angular/forms';
+import { DanceTypesComponent } from './components/dance-types/dance-types.component';
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -37,7 +38,8 @@ function initializeKeycloak(keycloak: KeycloakService) {
     EventCreatorComponent,
     ForbiddenComponent,
     HomepageComponent,
-    CreateParticipantDialogComponent
+    CreateParticipantDialogComponent,
+    DanceTypesComponent
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventCreatorService } from '../../services/event-creator.service';
 import { CreateParticipantDialogComponent } from '../../dialogs/create-participant-dialog/create-participant-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-event-creator',
@@ -22,7 +22,11 @@ export class EventCreatorComponent implements OnInit {
     danceType: null
   };
 
-  constructor(private eventService: EventCreatorService, private dialog: MatDialog) {}
+  constructor(
+    private eventService: EventCreatorService,
+    private dialog: MatDialog,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     // this.fetchData();

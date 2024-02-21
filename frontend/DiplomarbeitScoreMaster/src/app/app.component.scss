@@ -16,6 +16,19 @@
     flex: 1;
   }
 
+  .event-creator-button {
+    margin-right: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.3); // A light border for contrast
+    padding: 0 15px; // Optional: adjust padding to your liking
+    border-radius: 4px; // Optional: if you want rounded corners
+    box-sizing: border-box; // To include the border in the button's dimensions
+    transition: background-color 0.3s; // Smooth background color transition on hover
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1); // Slight background on hover for feedback
+    }
+  }
+
   .logout-button {
     margin-left: 12px;
     border: 2px solid rgba(255, 255, 255, 0.3); // A light border for contrast

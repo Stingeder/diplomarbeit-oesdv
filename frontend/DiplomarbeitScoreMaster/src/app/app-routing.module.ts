@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { KeycloakAuthGuard, KeycloakService } from 'keycloak-angular';
 import { TestComponent } from './components/test/test.component';
 import { RoleGuard } from './role.guard';
 import { EventCreatorComponent } from './components/event-creator/event-creator.component';
 import { ForbiddenComponent } from './components/forbidden/forbidden.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { DanceTypesComponent } from './components/dance-types/dance-types.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -27,6 +27,12 @@ const routes: Routes = [
     path: 'home',
     component: HomepageComponent,
     canActivate: [RoleGuard],
+  },
+  {
+    path: 'dance-types',
+    component: DanceTypesComponent,
+    canActivate: [RoleGuard],
+    data: { requiredRoles: ['master'] },
   },
 ];
 

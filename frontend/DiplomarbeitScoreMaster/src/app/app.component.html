@@ -1,7 +1,10 @@
 <mat-toolbar color="primary" class="app-toolbar">
   <span class="toolbar-title">ScoreMaster</span>
 
-  <!-- Other toolbar content goes here -->
+  <!-- Conditionally render the button -->
+  <button mat-button *ngIf="currentComponent === '_EventCreatorComponent'" (click)="onRedirectToDanceTypes()" class="event-creator-button">
+    Dance Types
+  </button>
 
   <span class="toolbar-spacer"></span>
 
